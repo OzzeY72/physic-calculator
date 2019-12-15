@@ -1,0 +1,154 @@
+{
+  buttons: [
+    [
+      {
+        "title": "(",
+        "value": "(",
+        "warning": false,
+        "dark": false,
+        "light": true
+      },
+      {
+        "title": ")",
+        "value": ")",
+        "warning": false,
+        "dark": false,
+        "light": true
+      },
+      {
+        "title": "CLS",
+        "value": "Delete",
+        "warning": false,
+        "dark": false,
+        "light": true
+      },
+      {
+        "title": "CA",
+        "value": "Clear",
+        "warning": true,
+        "dark": false,
+        "light": false
+      }
+    ],
+    [
+      {
+        "title": "7",
+        "value": "7",
+        "warning": false,
+        "dark": false,
+        "light": true
+      },
+      {
+        "title": "8",
+        "value": "8",
+        "warning": false,
+        "dark": false,
+        "light": true
+      },
+      {
+        "title": "9",
+        "value": "9",
+        "warning": false,
+        "dark": false,
+        "light": true
+      },
+      {
+        "title": "/",
+        "value": "Divide",
+        "warning": false,
+        "dark": true,
+        "light": false
+      }
+    ],
+    [
+      {
+        "title": "4",
+        "value": "4",
+        "warning": false,
+        "dark": false,
+        "light": true
+      },
+      {
+        "title": "5",
+        "value": "5",
+        "warning": false,
+        "dark": false,
+        "light": true
+      },
+      {
+        "title": "6",
+        "value": "6",
+        "warning": false,
+        "dark": false,
+        "light": true
+      },
+      {
+        "title": "+",
+        "value": "Plus",
+        "warning": false,
+        "dark": true,
+        "light": false
+      }
+    ],
+    [
+      {
+        "title": "1",
+        "value": "1",
+        "warning": false,
+        "dark": false,
+        "light": true
+      },
+      {
+        "title": "2",
+        "value": "2",
+        "warning": false,
+        "dark": false,
+        "light": true
+      },
+      {
+        "title": "3",
+        "value": "3",
+        "warning": false,
+        "dark": false,
+        "light": true
+      },
+      {
+        "title": "-",
+        "value": "Minus",
+        "warning": false,
+        "dark": true,
+        "light": false
+      }
+    ],
+    [
+      {
+        "title": ",",
+        "value": "Coma",
+        "warning": false,
+        "dark": false,
+        "light": true
+      },
+      {
+        "title": "0",
+        "value": "0",
+        "warning": false,
+        "dark": false,
+        "light": true
+      },
+      {
+        "title": "=",
+        "value": "Result",
+        "warning": true,
+        "dark": false,
+        "light": false
+      },
+      {
+        "title": "X",
+        "value": "Multiply",
+        "warning": false,
+        "dark": true,
+        "light": false
+      }
+    ]
+  ]
+}
