@@ -56,7 +56,7 @@
         "title": "/",
         "value": "Divide",
         "warning": false,
-        "dark": true,
+        "dark": false,
         "light": false
       }
     ],
@@ -86,7 +86,7 @@
         "title": "+",
         "value": "Plus",
         "warning": false,
-        "dark": true,
+        "dark": false,
         "light": false
       }
     ],
@@ -116,7 +116,7 @@
         "title": "-",
         "value": "Minus",
         "warning": false,
-        "dark": true,
+        "dark": false,
         "light": false
       }
     ],
@@ -146,7 +146,7 @@
         "title": "X",
         "value": "Multiply",
         "warning": false,
-        "dark": true,
+        "dark": false,
         "light": false
       }
     ]

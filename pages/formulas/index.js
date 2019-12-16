@@ -10,6 +10,7 @@ export class FormulasScreen extends Component {
           onPress={() => this.props.navigation.navigate('Main')}
           title="MAIN"
         />
+        <Text>To do</Text>
       </View>
     )
   }

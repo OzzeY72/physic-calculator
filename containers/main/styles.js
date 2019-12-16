@@ -3,7 +3,7 @@ export const styles = {
     justifyContent: "center",
     alignItems: "center",
     flex: 1,
-    margin: 2
+    margin: 1
   },
   shadow_text: {
     textAlign: "right",

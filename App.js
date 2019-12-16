@@ -1,7 +1,9 @@
 import React from 'react';
-// import { StyleSheet, Text, View } from 'react-native';
+//import { StyleSheet, Text, View } from 'react-native';
 import Navigator from './pages';
-import { AppLoading, Font } from 'expo';
+import {AppLoading} from 'expo';
+import * as Font from 'expo-font';
+
 
 export default class App extends React.Component {
   constructor(props) {
