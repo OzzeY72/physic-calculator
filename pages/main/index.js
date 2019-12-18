@@ -64,6 +64,13 @@ export class MainScreen extends Component {
     }
   }
 
+  onTemplesLeft(){
+    this.setTemplesValue('(');
+  }
+  onTemplesRight(){
+    this.setTemplesValue(')');  
+  }
+
   setValues(value, round) {
     const operators = '+-*/';
     const { current_num, clear_calc, highlight } = this.state;
@@ -83,6 +90,21 @@ export class MainScreen extends Component {
   setOperatorValue(value) {
     const operators = '+-*/';
     const { clear_calc, current_num, highlight } = this.state;
+    const num = operators.includes(current_num) ? '' : current_num;
+    const calc = operators.includes(current_num) ? clear_calc : clear_calc + current_num;
+
+    this.setState({
+      clear_calc: calc,
+      current_num: value,
+      highlight: false,
+      result: MainScreen.calculateString(calc),
+      calculation: highlight ? MainScreen.calculateString(clear_calc) : clear_calc + num + value
+    })
+  }
+
+  setTemplesValue(value){
+    const operators = '+-*/()';
+    const { current_num, clear_calc, highlight } = this.state;
     const num = operators.includes(current_num) ? '' : current_num;
     const calc = operators.includes(current_num) ? clear_calc : clear_calc + current_num;
 

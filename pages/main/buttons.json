@@ -3,14 +3,14 @@
     [
       {
         "title": "(",
-        "value": "(",
+        "value": "TemplesLeft",
         "warning": false,
         "dark": false,
         "light": true
       },
       {
         "title": ")",
-        "value": ")",
+        "value": "TemplesRight",
         "warning": false,
         "dark": false,
         "light": true
