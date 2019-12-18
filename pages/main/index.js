@@ -59,7 +59,7 @@ export class MainScreen extends Component {
   }
 
   onComa() {
-    if (!this.state.current_num.includes('.')) {
+    if (!this.state.current_num.includes('.') && this.state.result) {
       this.setValues('.')
     }
   }
