@@ -19,7 +19,7 @@ export const styles = {
   },
   base_text: {
     textAlign: "right",
-    fontSize: 50,
+    fontSize: 45,
     color:'#FBF8F8'
   },
   /*history: {
