@@ -87,7 +87,7 @@ export class MainScreen extends Component {
       highlight: false,
       clear_calc: calc,
       current_num: num + value,
-      result: this.state.flag ? MainScreen.calculateString(calculation.replace('(','')) : MainScreen.calculateString(calculation),
+      result: this.state.flag ? MainScreen.calculateString(calculation.replace('(',' ')) : MainScreen.calculateString(calculation),
       calculation: highlight ? clear_calc : calculation
     })
   }
@@ -102,7 +102,7 @@ export class MainScreen extends Component {
       clear_calc: calc,
       current_num: value,
       highlight: false,
-      result: this.state.flag ? MainScreen.calculateString(calculation.replace('(','')) : MainScreen.calculateString(calculation),
+      result: this.state.flag ? MainScreen.calculateString(calc.replace('(',' ')) : MainScreen.calculateString(calc),
       calculation: highlight ? MainScreen.calculateString(clear_calc) : clear_calc + num + value
     })
   }
