@@ -16,7 +16,7 @@
         "light": true
       },
       {
-        "title": "CLS",
+        "title": "<-",
         "value": "Delete",
         "warning": false,
         "dark": false,
@@ -143,7 +143,7 @@
         "light": false
       },
       {
-        "title": "X",
+        "title": "*",
         "value": "Multiply",
         "warning": false,
         "dark": false,
