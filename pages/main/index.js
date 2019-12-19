@@ -16,14 +16,15 @@ export class MainScreen extends Component {
     super(props);
     this.state = { calculation: '', current_num: '', result: '', highlight: false, clear_calc: '', flag: false};
   }
-
-  onTap(value) { this.setValues(value) }
-  onPlus() { this.setOperatorValue('+') }
-  onMinus() { this.setOperatorValue('-') }
-  onClear() { this.setState({ calculation: '', current_num: '', result: '', clear_calc: '', highlight: false, flag: false}) }
+  isTemples(value){if (value == '(') {return true }else return false}
+  isCanPrint(){if ((!this.state.result) || (isTemples(getLast))) {return false} else return true }
+  onTap(value) {this.setValues(value) }
+  onPlus() { if (this.isCanPrint()) this.setOperatorValue('+')}
+  onMinus() { if (this.isCanPrint()) this.setOperatorValue('-') }
+  onClear() { if (this.isCanPrint()) this.setState({ calculation: '', current_num: '', result: '', clear_calc: '', highlight: false, flag: false}) }
   onDivide() {
     if (!isEmpty(this.state.calculation)) {
-      this.setOperatorValue('/')
+      if (this.isCanPrint()) this.setOperatorValue('/')
     }
   }
 
