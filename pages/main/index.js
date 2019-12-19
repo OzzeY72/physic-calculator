@@ -14,13 +14,13 @@ export class MainScreen extends Component {
 
   constructor(props) {
     super(props);
-    this.state = { calculation: '', current_num: '', result: '', highlight: false, clear_calc: '' };
+    this.state = { calculation: '', current_num: '', result: '', highlight: false, clear_calc: '', flag: true};
   }
 
   onTap(value) { this.setValues(value) }
   onPlus() { this.setOperatorValue('+') }
   onMinus() { this.setOperatorValue('-') }
-  onClear() { this.setState({ calculation: '', current_num: '', result: '', clear_calc: '', highlight: false }) }
+  onClear() { this.setState({ calculation: '', current_num: '', result: '', clear_calc: '', highlight: false, flag: true}) }
   onDivide() {
     if (!isEmpty(this.state.calculation)) {
       this.setOperatorValue('/')
@@ -49,13 +49,19 @@ export class MainScreen extends Component {
 
     const result = isEmpty(result_value) ? '' : calculateString(result_value);
 
-    this.setState({ current_num: num, clear_calc: clear, calculation: calc, result: result + sign })
+    this.setState({ current_num: num, clear_calc: clear, calculation: calc, result: result + sign, flag: num == '(' ? false : this.state.flag})
   }
 
   onResult() {
     const calc = MainScreen.calculateString(this.state.calculation);
+    /*try {
+    }
+    catch (e) {
+      //if (e instanceof SyntaxError) calc.splice(0,1); 
+    }*/
 
-    this.setState({ result: calc, clear_calc: calc, current_num: '', highlight: true})
+    this.setState({ result: calc, clear_calc: calc, current_num: '', highlight: true, temples: 0, flag: false})
+    
   }
 
   onComa() {
@@ -63,16 +69,14 @@ export class MainScreen extends Component {
       this.setValues('.')
     }
   }
-
   onTemplesLeft(){
     this.setTemplesValue('(');
   }
   onTemplesRight(){
-    this.setTemplesValue(')');  
+    if (this.state.result) this.setTemplesValue(')');  
   }
-
   setValues(value, round) {
-    const operators = '+-*/';
+    const operators = '';
     const { current_num, clear_calc, highlight } = this.state;
     const num = operators.includes(current_num) ? '' : current_num;
     const calc = operators.includes(current_num) ? clear_calc + current_num : clear_calc;
@@ -82,7 +86,7 @@ export class MainScreen extends Component {
       highlight: false,
       clear_calc: calc,
       current_num: num + value,
-      result: MainScreen.calculateString(calculation, round),
+      result: this.state.flag ? clear_calc + num + value : MainScreen.calculateString(clear_calc + num + value),
       calculation: highlight ? clear_calc : calculation
     })
   }
@@ -97,14 +101,14 @@ export class MainScreen extends Component {
       clear_calc: calc,
       current_num: value,
       highlight: false,
-      result: MainScreen.calculateString(calc),
+      result: this.state.flag ? clear_calc + num + value : MainScreen.calculateString(clear_calc),
       calculation: highlight ? MainScreen.calculateString(clear_calc) : clear_calc + num + value
     })
   }
 
   setTemplesValue(value){
-    const operators = '+-*/()';
-    const { current_num, clear_calc, highlight } = this.state;
+    const operators = '()';
+    const { current_num, clear_calc, highlight} = this.state;
     const num = operators.includes(current_num) ? '' : current_num;
     const calc = operators.includes(current_num) ? clear_calc : clear_calc + current_num;
 
@@ -112,8 +116,9 @@ export class MainScreen extends Component {
       clear_calc: calc,
       current_num: value,
       highlight: false,
-      result: MainScreen.calculateString(calc),
-      calculation: highlight ? MainScreen.calculateString(clear_calc) : clear_calc + num + value
+      result: value == ')' ? MainScreen.calculateString(clear_calc + num + value) : this.state.calculation,
+      calculation: highlight ? MainScreen.calculateString(clear_calc) : clear_calc + num + value,
+      flag: value == ')' ? false : true
     })
   }
 
@@ -134,5 +139,6 @@ export class MainScreen extends Component {
     this.setValues = this.setValues.bind(this);
     this.onMultiply = this.onMultiply.bind(this);
     this.setOperatorValue = this.setOperatorValue.bind(this);
+    this.setTemplesValue = this.setTemplesValue.bind(this);
   }
 }
