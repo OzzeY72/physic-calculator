@@ -53,14 +53,13 @@ export class MainScreen extends Component {
   }
 
   onResult() {
-    const calc = MainScreen.calculateString(this.state.calculation);
-    /*try {
+    try {
+   		const calc = MainScreen.calculateString(this.state.calculation);
+   		this.setState({ result: calc, clear_calc: calc, current_num: '', highlight: true, temples: 0, flag: false})
     }
     catch (e) {
-      //if (e instanceof SyntaxError) calc.splice(0,1); 
-    }*/
-
-    this.setState({ result: calc, clear_calc: calc, current_num: '', highlight: true, temples: 0, flag: false})
+      const calc = MainScreen.calculateString(this.state.calculation.slice(1));
+      this.setState({ result: calc, clear_calc: calc, current_num: '', highlight: true, temples: 0, flag: false})}
     
   }
 
