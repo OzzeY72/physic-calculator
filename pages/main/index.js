@@ -14,13 +14,13 @@ export class MainScreen extends Component {
 
   constructor(props) {
     super(props);
-    this.state = { calculation: '', current_num: '', result: '', highlight: false, clear_calc: '', flag: true};
+    this.state = { calculation: '', current_num: '', result: '', highlight: false, clear_calc: '', flag: false};
   }
 
   onTap(value) { this.setValues(value) }
   onPlus() { this.setOperatorValue('+') }
   onMinus() { this.setOperatorValue('-') }
-  onClear() { this.setState({ calculation: '', current_num: '', result: '', clear_calc: '', highlight: false, flag: true}) }
+  onClear() { this.setState({ calculation: '', current_num: '', result: '', clear_calc: '', highlight: false, flag: false}) }
   onDivide() {
     if (!isEmpty(this.state.calculation)) {
       this.setOperatorValue('/')
@@ -50,16 +50,17 @@ export class MainScreen extends Component {
     const result = isEmpty(result_value) ? '' : calculateString(result_value);
 
     this.setState({ current_num: num, clear_calc: clear, calculation: calc, result: result + sign, flag: num == '(' ? false : this.state.flag})
+    this.setState({ flag: num == ')' ? true : this.state.flag})
   }
 
   onResult() {
     try {
    		const calc = MainScreen.calculateString(this.state.calculation);
-   		this.setState({ result: calc, clear_calc: calc, current_num: '', highlight: true, temples: 0, flag: false})
+   		this.setState({ result: calc, clear_calc: calc, current_num: '', highlight: true, flag: false})
     }
     catch (e) {
-      const calc = MainScreen.calculateString(this.state.calculation.slice(1));
-      this.setState({ result: calc, clear_calc: calc, current_num: '', highlight: true, temples: 0, flag: false})}
+      const calc = MainScreen.calculateString(this.state.calculation.removeChar(1));
+      this.setState({ result: calc, clear_calc: calc, current_num: '', highlight: true, flag: false})}
     
   }
 
@@ -75,6 +76,7 @@ export class MainScreen extends Component {
     if (this.state.result) this.setTemplesValue(')');  
   }
   setValues(value, round) {
+  	//TO do number after temples
     const operators = '';
     const { current_num, clear_calc, highlight } = this.state;
     const num = operators.includes(current_num) ? '' : current_num;
@@ -85,7 +87,7 @@ export class MainScreen extends Component {
       highlight: false,
       clear_calc: calc,
       current_num: num + value,
-      result: this.state.flag ? clear_calc + num + value : MainScreen.calculateString(clear_calc + num + value),
+      result: this.state.flag ? MainScreen.calculateString(calculation.replace('(','')) : MainScreen.calculateString(calculation),
       calculation: highlight ? clear_calc : calculation
     })
   }
@@ -100,7 +102,7 @@ export class MainScreen extends Component {
       clear_calc: calc,
       current_num: value,
       highlight: false,
-      result: this.state.flag ? clear_calc + num + value : MainScreen.calculateString(clear_calc),
+      result: this.state.flag ? MainScreen.calculateString(calculation.replace('(','')) : MainScreen.calculateString(calculation),
       calculation: highlight ? MainScreen.calculateString(clear_calc) : clear_calc + num + value
     })
   }
