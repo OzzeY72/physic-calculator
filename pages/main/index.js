@@ -16,15 +16,14 @@ export class MainScreen extends Component {
     super(props);
     this.state = { calculation: '', current_num: '', result: '', highlight: false, clear_calc: '', flag: false};
   }
-  isTemples(value){if (value == '(') {return true }else return false}
-  isCanPrint(){if ((!this.state.result) || (isTemples(getLast))) {return false} else return true }
+  //isTemples(value) {return '()'.includes(value) ? true : false}
   onTap(value) {this.setValues(value) }
-  onPlus() { if (this.isCanPrint()) this.setOperatorValue('+')}
-  onMinus() { if (this.isCanPrint()) this.setOperatorValue('-') }
-  onClear() { if (this.isCanPrint()) this.setState({ calculation: '', current_num: '', result: '', clear_calc: '', highlight: false, flag: false}) }
+  onPlus() {  this.setOperatorValue('+')}
+  onMinus() {  this.setOperatorValue('-') }
+  onClear() { this.setState({ calculation: '', current_num: '', result: '', clear_calc: '', highlight: false, flag: false}) }
   onDivide() {
     if (!isEmpty(this.state.calculation)) {
-      if (this.isCanPrint()) this.setOperatorValue('/')
+       this.setOperatorValue('/')
     }
   }
 
@@ -50,8 +49,7 @@ export class MainScreen extends Component {
 
     const result = isEmpty(result_value) ? '' : calculateString(result_value);
 
-    this.setState({ current_num: num, clear_calc: clear, calculation: calc, result: result + sign, flag: num == '(' ? false : this.state.flag})
-    this.setState({ flag: num == ')' ? true : this.state.flag})
+    this.setState({ current_num: num, clear_calc: clear, calculation: calc, result: result + sign, flag: isTemples(num) ? false : this.state.flag})
   }
 
   onResult() {
