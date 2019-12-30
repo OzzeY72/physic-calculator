@@ -7,8 +7,8 @@ export const MainPageView = ({ scope}) => {
     return (
       <View>
         <Button
-          onPress={() => this.props.navigation.navigate('Main')}
-          title="MAIN"
+          onPress={() => scope.props.navigation.navigate('Main')}
+          title="Calculator"
         />
         <FlatList
           data={data}
