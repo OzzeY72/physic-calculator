@@ -75,12 +75,11 @@ export class MainScreen extends Component {
     if (this.state.result) this.setTemplesValue(')');  
   }
   setValues(value, round) {
-  	//TO do number after temples
     const operators = '';
     const { current_num, clear_calc, highlight } = this.state;
     const num = operators.includes(current_num) ? '' : current_num;
     const calc = operators.includes(current_num) ? clear_calc + current_num : clear_calc;
-    const calculation = calc + num + value;
+    const calculation = current_numincludes(')') ? calc + num + '*' + value : calc + num + value;
 
     this.setState({
       highlight: false,
