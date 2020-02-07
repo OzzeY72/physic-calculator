@@ -1,9 +1,9 @@
 {
   "devToolsPort": 19002,
   "expoServerPort": 19000,
-  "packagerPort": 19001,
-  "packagerPid": 12936,
-  "expoServerNgrokUrl": "https://3a-pqi.ozzey.physic-calculator.exp.direct",
-  "packagerNgrokUrl": "https://packager.3a-pqi.ozzey.physic-calculator.exp.direct",
-  "ngrokPid": 8788
+  "packagerPort": null,
+  "packagerPid": null,
+  "expoServerNgrokUrl": "https://3a-pqi.anonymous.physic-calculator.exp.direct",
+  "packagerNgrokUrl": "https://packager.3a-pqi.anonymous.physic-calculator.exp.direct",
+  "ngrokPid": 3580
 }
