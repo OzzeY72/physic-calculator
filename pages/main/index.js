@@ -53,16 +53,9 @@ export class MainScreen extends Component {
   }
 
   onResult() {
-    try {
-   		const calc = MainScreen.calculateString(this.state.calculation);
+   		const calc = MainScreen.isOperator(this.state.current_num) ? MainScreen.calculateString(this.state.calculation.slice(0, -1)) : MainScreen.calculateString(this.state.calculation);
    		this.setState({ result: calc, clear_calc: calc, current_num: '', highlight: true})
     }
-    catch (e) {
-      const calc = MainScreen.calculateString(this.state.calculation.removeChar(1));
-      this.setState({ result: calc, clear_calc: calc, current_num: '', highlight: true})}
-    
-  }
-
   onComa() {
     if (!this.state.current_num.includes('.') && this.state.result) {
       this.setValues('.')
