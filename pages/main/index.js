@@ -75,18 +75,17 @@ export class MainScreen extends Component {
     if (this.state.result) this.setTemplesValue(')');  
   }
   setValues(value, round) {
-    const operators = '';
     const { current_num, clear_calc, highlight } = this.state;
-    const num = operators.includes(current_num) ? '' : current_num;
-    const calc = operators.includes(current_num) ? clear_calc + current_num : clear_calc;
-    const calculation = current_numincludes(')') ? calc + num + '*' + value : calc + num + value;
+    const num =  current_num;
+    const calc = clear_calc;
+    const calculation = current_num.includes(')') ? calc + num + '*' + value : calc + num + value;
 
     this.setState({
       highlight: false,
       clear_calc: calc,
       current_num: num + value,
-      result: this.state.flag ? MainScreen.calculateString(calculation.replace('(',' ')) : MainScreen.calculateString(calculation),
-      calculation: highlight ? clear_calc : calculation
+      result: this.state.flag ? MainScreen.calculateString(calculation.replace('(','')) : MainScreen.calculateString(calculation),
+      calculation: highlight ? clear_calc : calculation 
     })
   }
 
@@ -110,14 +109,15 @@ export class MainScreen extends Component {
     const { current_num, clear_calc, highlight} = this.state;
     const num = operators.includes(current_num) ? '' : current_num;
     const calc = operators.includes(current_num) ? clear_calc : clear_calc + current_num;
+    const calculation = value.includes('(') ? !current_num.includes('+-*/0') ? calc + '*' + value : calc + value : calc + value;
 
     this.setState({
-      clear_calc: calc,
+      clear_calc: calculation,
       current_num: value,
       highlight: false,
-      result: value == ')' ? MainScreen.calculateString(clear_calc + num + value) : this.state.calculation,
-      calculation: highlight ? MainScreen.calculateString(clear_calc) : clear_calc + num + value,
-      flag: value == ')' ? false : true
+      result: !value.includes('(') ? MainScreen.calculateString(calculation) : this.state.calculation,
+      calculation: highlight ? MainScreen.calculateString(clear_calc) : calculation,
+      flag: !value.includes('(') ? false : true
     })
   }
 

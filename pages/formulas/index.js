@@ -21,7 +21,7 @@ export class FormulasScreen extends Component {
 
   makeRemoteRequest = () => {
     const { page, seed } = this.state;
-    const url = `http://192.168.0.106:8080/json/formulas.json`;
+    const url = `http://192.168.0.103:8080/json/formulas.json`;
     this.setState({ loading: true });
     fetch(url)
       .then(res => res.json())
