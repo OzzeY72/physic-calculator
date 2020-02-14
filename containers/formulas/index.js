@@ -1,9 +1,17 @@
 import React from 'react';
-import {Button, Text, View, FlatList} from "react-native";
+import {Button, Text, View, FlatList, Switch, Container,StyleSheet} from "react-native";
 import { styles } from "./styles.js";
 
 export const MainPageView = ({ scope}) => {
-  const { data} = scope.state;
+  function sortingData(sub){
+    data = scope.state.data
+    for(var i = 0;i < data.length;i++){
+      var ins = data[i];
+      data.splice(i,1);
+      ins.subject == sub ? data.unshift(ins) : data.push(ins)
+    }
+    return data
+  }
     return (
       <View>
         <Button
@@ -11,9 +19,10 @@ export const MainPageView = ({ scope}) => {
           title="Calculator"
         />
         <FlatList
-          data={data}
+          data={sortingData("chemistry")}
+          keyExtractor={(item, index) => item.formula}
           renderItem={({ item }) => (
-            <Text style={styles.item}>{item.formula}</Text>
+            <Text style={item.subject == `physic` ? styles.physic : styles.chemistry}>{item.formula}</Text>
           )}
         />
       </View>

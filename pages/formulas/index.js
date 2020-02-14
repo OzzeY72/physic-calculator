@@ -12,7 +12,12 @@ export class FormulasScreen extends Component {
       seed: 1,
       error: null,
       refreshing: false,
+
     };
+  }
+
+  toggleSwitch1 = (value) => {
+      this.setState({switch1Value: value})
   }
 
   componentDidMount() {
@@ -21,7 +26,7 @@ export class FormulasScreen extends Component {
 
   makeRemoteRequest = () => {
     const { page, seed } = this.state;
-    const url = `http://192.168.0.103:8080/json/formulas.json`;
+    const url = `https://radiant-mesa-41191.herokuapp.com/json/formulas.json`;
     this.setState({ loading: true });
     fetch(url)
       .then(res => res.json())
