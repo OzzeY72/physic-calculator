@@ -11,10 +11,10 @@ export const MainPageView = ({ scope, buttons }) => {
       <Grid>
         <Row style={styles.head.base}>
           <Col style={styles.head.text.base}>
-            <Item regular style={{flex: 2}} disabled>
+            <Item regular style={styles.head.text.base.first} disabled>
               <Input style={highlight ? styles.shadow_text : styles.base_text} value={calculation || '0'} disabled/>
             </Item>
-            <Item regular style={{flex: 1}} disabled>
+            <Item regular style={styles.head.text.base.second} disabled>
               <Input style={[styles.base_text, !highlight ? styles.shadow_text : styles.base_text]} value={result} disabled />
             </Item>
           </Col>
