@@ -59,5 +59,11 @@ export const styles = {
     base: {
       flex: 8
     }
-  }
+  },
+  border:{
+    textAlign: "right",
+    color:'#FBF8F8',
+    borderColor: '#3E3331',
+    fontSize: 25,
+  },
 };
