@@ -2,6 +2,7 @@ import React from 'react';
 import {createStackNavigator, createAppContainer, createDrawerNavigator} from "react-navigation";
 import {MainScreen} from "./main";
 import {FormulasScreen} from "./formulas";
+import {CreateScreen} from "./create";
 
 const Navigation = createDrawerNavigator({
     Main: {
@@ -9,6 +10,9 @@ const Navigation = createDrawerNavigator({
     },
     Formulas: {
       screen: FormulasScreen
+    },
+    CreateFormula:{
+      screen: CreateScreen
     }
   },
   {

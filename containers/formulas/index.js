@@ -1,5 +1,6 @@
 import React from 'react';
-import {Button, Text, View, FlatList, Switch, Container,StyleSheet} from "react-native";
+import {Button, Text, View, FlatList, Switch, Container,StyleSheet,ScrollView,RefreshControl,SafeAreaView} from "react-native";
+import Constants from 'expo-constants';
 import { styles } from "./styles.js";
 
 export const MainPageView = ({ scope}) => {
@@ -12,8 +13,27 @@ export const MainPageView = ({ scope}) => {
     }
     return data
   }
+  function wait(timeout) {
+  return new Promise(resolve => {
+    setTimeout(resolve, timeout);
+  });
+}
+  const [refreshing, setRefreshing] = React.useState(false);
+
+  const onRefresh = React.useCallback(() => {
+    setRefreshing(true);
+    scope.makeRemoteRequest();
+    wait(2000).then(() => setRefreshing(false));
+  }, [refreshing]);
+
     return (
-      <View>
+      <SafeAreaView style={styles.container}>
+      <ScrollView
+        contentContainerStyle={styles.scrollView}
+        refreshControl={
+          <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+        }
+      >
         <Button
           onPress={() => scope.props.navigation.navigate('Main')}
           title="Calculator"
@@ -25,6 +45,8 @@ export const MainPageView = ({ scope}) => {
             <Text style={item.subject == `physic` ? styles.physic : styles.chemistry}>{item.formula}</Text>
           )}
         />
-      </View>
+      </ScrollView>
+    </SafeAreaView>
+        
     )
 };

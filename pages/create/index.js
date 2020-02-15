@@ -1,11 +1,10 @@
 import React, {Component} from 'react';
-import {MainPageView}  from '../../containers/formulas';
+import {MainPageView}  from '../../containers/create';
 
-export class FormulasScreen extends Component {
+export class CreateScreen extends Component {
 
   constructor(props) {
     super(props);
-    this.makeRemoteRequest = this.makeRemoteRequest.bind(this);
     this.state = { 
       loading: false,
       data: [],
@@ -15,14 +14,6 @@ export class FormulasScreen extends Component {
       refreshing: false,
 
     };
-  }
-
-  toggleSwitch1 = (value) => {
-      this.setState({switch1Value: value})
-  }
-
-  componentDidMount() {
-    this.makeRemoteRequest();
   }
 
   makeRemoteRequest = () => {
