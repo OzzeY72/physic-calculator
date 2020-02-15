@@ -5,39 +5,27 @@ export class CreateScreen extends Component {
 
   constructor(props) {
     super(props);
+    this.sendFormula = this.sendFormula.bind(this);
     this.state = { 
-      loading: false,
-      data: [],
-      page: 1,
-      seed: 1,
-      error: null,
-      refreshing: false,
-
+      formula: '',
+      subject: '',
     };
   }
+  sendFormula = () => {
+    var body = 'formula=' + encodeURIComponent(this.state.formula) +
+        '&subject=' + encodeURIComponent(this.state.subject);
+    const Http = new XMLHttpRequest();
+    const url = `https://radiant-mesa-41191.herokuapp.com/register`;
+    Http.open('POST',url);
+    Http.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
-  makeRemoteRequest = () => {
-    const { page, seed } = this.state;
-    const url = `https://radiant-mesa-41191.herokuapp.com/json/formulas.json`;
-    this.setState({ loading: true });
-    fetch(url)
-      .then(res => res.json())
-      .then(res => {
-        this.setState({
-          data: res,
-          error: res.error || null,
-          loading: false,
-          refreshing: false
-        });
-      })
-      .catch(error => {
-        this.setState({ error, loading: false });
-      });
-  };
-
-  /*getText(){
-    setState({str: 'aaaaaaa'});
-  }*/
+    Http.send(body);
+    this.setState({
+      formula:'',
+      subject:''
+    });
+  
+  }
   render() {
     return <MainPageView scope={this}/>
   }
