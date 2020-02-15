@@ -13,7 +13,7 @@ export class FormulasScreen extends Component {
       seed: 1,
       error: null,
       refreshing: false,
-
+      switchValue: false,
     };
   }
 

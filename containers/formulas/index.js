@@ -4,7 +4,7 @@ import Constants from 'expo-constants';
 import { styles } from "./styles.js";
 
 export const MainPageView = ({ scope}) => {
-  function sortingData(sub){
+/*  function sortingData(sub){
     data = scope.state.data
     for(var i = 0;i < data.length;i++){
       var ins = data[i];
@@ -13,6 +13,23 @@ export const MainPageView = ({ scope}) => {
     }
     return data
   }
+*/
+
+function sortingData(sub){
+    var data = scope.state.data,
+        data1 = [],
+        data2 = []
+
+    for(var i = 0;i < data.length;i++){
+      var ins = data[i];
+      if(ins.subject == sub) data1[data1.length] = ins
+        else data2[data2.length] = ins;
+    }
+    data = data1.concat(data2);
+    return data
+  }
+
+
   function wait(timeout) {
   return new Promise(resolve => {
     setTimeout(resolve, timeout);
@@ -38,8 +55,15 @@ export const MainPageView = ({ scope}) => {
           onPress={() => scope.props.navigation.navigate('Main')}
           title="Calculator"
         />
+        <View style={styles.switch}>
+          <Text style={styles.switch.text}>Фильтр: </Text>
+          <Switch  
+              value={scope.state.switchValue}  
+              onValueChange ={(switchValue)=>scope.setState({switchValue})}
+              style={styles.switch.switch}/>
+        </View>
         <FlatList
-          data={sortingData("chemistry")}
+          data={scope.state.switchValue ? sortingData("physic") : sortingData("chemistry")}
           keyExtractor={(item, index) => item.formula}
           renderItem={({ item }) => (
             <Text style={item.subject == `physic` ? styles.physic : styles.chemistry}>{item.formula}</Text>
