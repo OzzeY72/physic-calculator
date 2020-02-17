@@ -3,6 +3,6 @@
   "lanType": "ip",
   "dev": true,
   "minify": false,
-  "urlRandomness": "vb-mpm",
+  "urlRandomness": "wm-cei",
   "https": false
 }
