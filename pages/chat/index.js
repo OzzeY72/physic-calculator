@@ -25,7 +25,7 @@ export class ChatScreen extends Component {
     this.getMassages();
   }
 
-  getMassages = () => {
+  getMassages () {
     const { page, seed } = this.state;
     const url = `http://radiant-mesa-41191.herokuapp.com/massage`;
     this.setState({ loading: true });
@@ -42,12 +42,13 @@ export class ChatScreen extends Component {
       .catch(error => {
         this.setState({ error, loading: false });
       });
+
   }
   sendMassage = () => {
     var body = 'massage=' + encodeURIComponent(this.state.massage) +
         '&author=' + encodeURIComponent(this.state.author);
     const Http = new XMLHttpRequest();
-    const url = `https://radiant-mesa-41191.herokuapp.com/massage`;
+    const url = `http://radiant-mesa-41191.herokuapp.com/massage`;
     Http.open('POST',url);
     Http.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 

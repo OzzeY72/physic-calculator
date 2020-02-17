@@ -27,7 +27,7 @@ export class FormulasScreen extends Component {
 
   makeRemoteRequest = () => {
     const { page, seed } = this.state;
-    const url = `https://radiant-mesa-41191.herokuapp.com/json/formulas.json`;
+    const url = `http://radiant-mesa-41191.herokuapp.com/json/formulas.json`;
     this.setState({ loading: true });
     fetch(url)
       .then(res => res.json())
