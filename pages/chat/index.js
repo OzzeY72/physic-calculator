@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {MainPageView}  from '../../containers/chat';
+//import AsyncStorage from '@react-native-community/async-storage';
 
 export class ChatScreen extends Component {
 
@@ -68,6 +69,16 @@ export class ChatScreen extends Component {
     });
   
   }
+  /*async getUser(){
+    try {
+    const value = await AsyncStorage.getItem('name')
+    if(value !== null) {
+      this.state.author = value;
+    }
+  } catch(e) {
+  }
+  }
+  */
   render() {
     return <MainPageView scope={this}/>
   }
