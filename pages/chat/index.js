@@ -21,8 +21,18 @@ export class ChatScreen extends Component {
     };
   }
 
+  async Listener (){
+    let response = await fetch('http://radiant-mesa-41191.herokuapp.com/massage');
+    let data = await response.json();
+    console.log(data);
+    if (data.length != this.state.data.length) this.setState({data:data})
+
+    this.Listener();
+  }
+
   componentDidMount(){
     this.getMassages();
+    this.Listener();
   }
 
   getMassages () {
