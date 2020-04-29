@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {MainPageView}  from '../../containers/chat';
+//import AsyncStorage from '@react-native-community/async-storage';
 
 export class ChatScreen extends Component {
 
@@ -21,8 +22,18 @@ export class ChatScreen extends Component {
     };
   }
 
+  async Listener (){
+    let response = await fetch('http://radiant-mesa-41191.herokuapp.com/massage');
+    let data = await response.json();
+    console.log(data);
+    if (data.length != this.state.data.length) this.setState({data:data})
+
+    this.Listener();
+  }
+
   componentDidMount(){
     this.getMassages();
+    this.Listener();
   }
 
   getMassages () {
@@ -58,6 +69,16 @@ export class ChatScreen extends Component {
     });
   
   }
+  /*async getUser(){
+    try {
+    const value = await AsyncStorage.getItem('name')
+    if(value !== null) {
+      this.state.author = value;
+    }
+  } catch(e) {
+  }
+  }
+  */
   render() {
     return <MainPageView scope={this}/>
   }

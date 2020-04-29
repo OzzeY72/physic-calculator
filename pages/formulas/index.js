@@ -44,9 +44,7 @@ export class FormulasScreen extends Component {
       });
   };
 
-  /*getText(){
-    setState({str: 'aaaaaaa'});
-  }*/
+
   render() {
     return <MainPageView scope={this}/>
   }

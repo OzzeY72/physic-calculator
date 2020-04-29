@@ -3,7 +3,8 @@ import {createStackNavigator, createAppContainer, createDrawerNavigator} from "r
 import {MainScreen} from "./main";
 import {FormulasScreen} from "./formulas";
 import {CreateScreen} from "./create";
-import {ChatScreen} from "./chat"
+import {ChatScreen} from "./chat";
+import {SettingsScreen} from "./settings"
 
 const Navigation = createDrawerNavigator({
     Main: {
@@ -17,7 +18,10 @@ const Navigation = createDrawerNavigator({
     },
     Chat:{
       screen: ChatScreen
-    }
+    },
+    Settings:{
+      screen: SettingsScreen
+    },
   },
   {
     initialRouteName: "Main"
