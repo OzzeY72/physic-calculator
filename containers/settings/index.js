@@ -15,7 +15,7 @@ export const MainPageView = ({ scope}) => {
           onChangeText={(text) => scope.setState({author: text})}
           value={scope.state.author}
         />
-          <TouchableOpacity onPress={() => {/*scope.storeData()*/}} style={styles.button}><Text style={styles.button.text}>Сохранить</Text></TouchableOpacity>
+          <TouchableOpacity onPress={() => {scope._storeData()}} style={styles.button}><Text style={styles.button.text}>Сохранить</Text></TouchableOpacity>
       </View>
     )
 };
