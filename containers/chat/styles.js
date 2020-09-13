@@ -1,4 +1,14 @@
+import {Dimensions} from "react-native";
+const screenHeight = Math.round(Dimensions.get('window').height);
+const screenWidth = Math.round(Dimensions.get('window').width);
 export const styles = {
+  key:{
+    backgroundColor:'#000',
+    height: screenHeight,
+  },
+  bcg:{
+    backgroundColor:'#302ae8',
+  },
   flatList:{
     text:{
       textAlign: 'right',
@@ -10,6 +20,7 @@ export const styles = {
         textAlign:'right',
       },
     textbox:{
+      textAlign: 'right',
       boxSizing: 'content-box',
       borderWidth: 1,
       borderColor: 'gray',
@@ -19,45 +30,51 @@ export const styles = {
       alignSelf:'flex-end',
       marginBottom:5,
       paddingBottom: 2,
+      maxWidth: screenWidth/2-5,
+      
     },
-    height: '94.5%',
   },
   input: { 
-  	height: 40, 
-  	borderColor: 'gray',
-  	borderWidth: 2 ,
-  	paddingLeft: 10,
+    height: 40, 
+    borderColor: 'gray',
+    borderWidth: 2 ,
     borderRadius: 10,
-    height: 40,
-    flex:0.9,
     backgroundColor:'#fff',
   },
-  container:{
-    
+  view:{
+    display:'flex',
+    flexDirection:'row',
+    justifyContent:'space-between',
   },
-  button:{
-    text:{
-      textAlign: 'center',
-      fontSize: 20,
-      color:'#fff',
-    },
+  view2:{
+    display:'flex',
+    flexDirection:'row-reverse',
+    justifyContent:'space-between',
+  },
+  buttonDel:{
+    width: 20,
+    height: 20,
     backgroundColor:'#000',
-    borderColor: 'gray',
-    borderWidth: 1 ,
-    paddingLeft: 10,
-    borderRadius: 10,
-    padding: 2,
-    marginLeft:2,
-    height: 40,
-    flex:0.1,
+    borderWidth: 2,
+    borderColor: 'white',
+    borderRadius: 50,
+    marginTop:20, 
+    marginLeft: 15,
   },
   areaView:{
     backgroundColor:'#000',
-    paddingBottom:20,
+    alignContent:'stretch',
+    paddingTop:40,
+    //height: screenHeight-40,
   },
   block:{
-    flexDirection:'row',
-    height: '6.5%',
     backgroundColor:'#000',
+    justifyItems: "flex-end",
+  },
+  black:{
+    backgroundColor:'#000',
+  },
+  dn:{
+    display:'none',
   },
 };
